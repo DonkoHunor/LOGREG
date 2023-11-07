@@ -30,7 +30,15 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Hiányos kitöltés!", Toast.LENGTH_SHORT).show();
                 }
                 else{
-
+                    Cursor adatok = adatbazis.adatLekerdezes();
+                    if(adatok.getCount() == 0){
+                        Toast.makeText(MainActivity.this, "Nincs az adatbázisban bejegyzés", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(adatok.getString(2).equals(belepesEditText.getText().toString()) && adatok.getString(3).equals(jelszoEditText.getText().toString())){
+                        Intent intent = new Intent(MainActivity.this,LoggedInActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 }
             }
         });
@@ -51,5 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         belepesBtn = findViewById(R.id.belepesBtn);
         regisztracioBtn = findViewById(R.id.regisztracioBtn);
+
+        adatbazis = new DBHelper(MainActivity.this);
     }
 }
