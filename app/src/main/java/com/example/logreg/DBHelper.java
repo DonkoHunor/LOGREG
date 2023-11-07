@@ -15,7 +15,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String COL_EMAIL = "email";
     private static final String COL_FELHNEV = "felhasznalonev";
     private static final String COL_JELSZO = "jelszo";
-    private static final String COL_TELJESNEV = "teljes_nev";
+    private static final String COL_TELJESNEV = "teljesnev";
 
     public DBHelper(Context context){
         super(context, DB_NAME,null,DB_VERSION);
@@ -28,7 +28,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 COL_EMAIL + " TEXT NOT NULL, " +
                 COL_FELHNEV + " TEXT NOT NULL, " +
                 COL_JELSZO + " TEXT NOT NULL, " +
-                COL_TELJESNEV + "TEXT NOT NULL" + ");";
+                COL_TELJESNEV + " TEXT NOT NULL" + ");";
         sqLiteDatabase.execSQL(sql);
     }
 
